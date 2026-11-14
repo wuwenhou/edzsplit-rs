@@ -62,15 +62,15 @@ powershell -ExecutionPolicy Bypass -File .\scripts\parity.ps1
 
 ## Tải về
 
-Release mới nhất: **v0.2.1** — được build và self-test trong CI trên `ubuntu-latest` và `windows-latest`.
+Release mới nhất: **v0.2.2** — được build và self-test trong CI trên `ubuntu-latest` và `windows-latest`.
 
 | Nền tảng | Asset | Ghi chú |
 |---|---|---|
-| Linux x86-64 | `edzsplit-v0.2.1-x86_64-unknown-linux` | **Bản musl tĩnh hoàn toàn; không cần glibc.** Chạy được trên mọi kernel Linux x86-64. |
-| Windows x64 | `edzsplit-v0.2.1-x86_64-pc-windows.exe` | Bản GNU tĩnh; chỉ import DLL hệ thống. |
+| Linux x86-64 | `edzsplit-v0.2.2-x86_64-unknown-linux` | **Bản musl tĩnh hoàn toàn; không cần glibc.** Chạy được trên mọi kernel Linux x86-64. |
+| Windows x64 | `edzsplit-v0.2.2-x86_64-pc-windows.exe` | Bản MSVC với CRT tĩnh; chỉ import DLL hệ thống. |
 
 ```text
-https://github.com/wuwenhou/edzsplit-rs/releases/tag/v0.2.1
+https://github.com/wuwenhou/edzsplit-rs/releases/tag/v0.2.2
 ```
 
 Mỗi asset đều có file `.sha256` đi kèm trong cùng release.

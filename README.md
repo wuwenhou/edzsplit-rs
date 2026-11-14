@@ -63,15 +63,15 @@ powershell -ExecutionPolicy Bypass -File .\scripts\parity.ps1
 
 ## Download
 
-Latest release: **v0.2.1** — built and self-tested in CI on `ubuntu-latest` and `windows-latest`.
+Latest release: **v0.2.2** — built and self-tested in CI on `ubuntu-latest` and `windows-latest`.
 
 | Platform | Asset | Notes |
 |---|---|---|
-| Linux x86-64 | `edzsplit-v0.2.1-x86_64-unknown-linux` | **Fully static musl build; no glibc required.** Runs on any Linux x86-64 kernel. |
-| Windows x64 | `edzsplit-v0.2.1-x86_64-pc-windows.exe` | Static GNU build; imports only system DLLs. |
+| Linux x86-64 | `edzsplit-v0.2.2-x86_64-unknown-linux` | **Fully static musl build; no glibc required.** Runs on any Linux x86-64 kernel. |
+| Windows x64 | `edzsplit-v0.2.2-x86_64-pc-windows.exe` | MSVC build with static CRT; imports only system DLLs. |
 
 ```text
-https://github.com/wuwenhou/edzsplit-rs/releases/tag/v0.2.1
+https://github.com/wuwenhou/edzsplit-rs/releases/tag/v0.2.2
 ```
 
 Each asset ships a `.sha256` checksum file in the same release.
