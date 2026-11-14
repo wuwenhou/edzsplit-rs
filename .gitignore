@@ -1,0 +1,8 @@
+/target
+/parity
+/bench
+/clippy*.log
+/edzsplit-selftest-*/
+/edzsplit.exe
+/smoke
+

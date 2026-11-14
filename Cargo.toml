@@ -1,0 +1,34 @@
+[package]
+name = "edzsplit"
+version = "0.2.0"
+edition = "2024"
+rust-version = "1.93"
+description = "Split a multi-device EPLAN EDZ into one EDZ per part - Rust implementation"
+license = "MIT"
+authors = ["edzsplit contributors"]
+
+[[bin]]
+name = "edzsplit"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+crc32fast = "1"
+hex = "0.4"
+quick-xml = "0.42"
+rayon = "1.12"
+regex = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+sevenz-rust2 = { version = "0.25", features = ["compress"] }
+sha2 = "0.10"
+thiserror = "2"
+wait-timeout = "0.2"
+zip = { version = "9.5", default-features = false, features = ["deflate"] }
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true
+panic = "abort"
