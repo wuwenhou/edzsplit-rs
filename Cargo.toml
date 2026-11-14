@@ -1,6 +1,6 @@
 [package]
 name = "edzsplit"
-version = "0.2.2"
+version = "0.2.3"
 edition = "2024"
 rust-version = "1.93"
 description = "Split a multi-device EPLAN EDZ into one EDZ per part - Rust implementation"

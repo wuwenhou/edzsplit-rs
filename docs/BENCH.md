@@ -12,18 +12,26 @@ Methodology:
   archive is read once per run.
 * Wall time is a single run (not a statistical sample), machine otherwise idle.
 * `--verify-structural` enabled in both implementations (default).
-* Source: `SEW-EURODRIVE_1.edz` (1.98 MB, 1,000 parts, 1000 outputs,
-  ~27.6 MB written) and `Wittenstein.edz` (10.5 MB, 142 parts,
-  1.16 GB written — macro-heavy).
+* Sources: `SEW-EURODRIVE_1.edz` (1.98 MB, 1,000 parts, 1000 outputs,
+  ~27.6 MB written), `Wittenstein.edz` (10.5 MB, 142 parts,
+  1.16 GB written — macro-heavy), and `Hirschmann.edz` (216 MB,
+  521 parts → 474 outputs, ~1.06 GB written).
 
-| Tool | Mode | SEW-EURODRIVE_1 | Wittenstein |
-|---|---|---|---|
-| C# (patched) + 7z CLI | sequential | 66.68 s | 35.30 s |
-| Rust release | `--jobs 1` | 49.33 s | 43.72 s |
-| Rust release | `--jobs auto` (8) | **5.49 s** | **6.60 s** |
+| Tool | Mode | SEW-EURODRIVE_1 | Wittenstein | Hirschmann |
+|---|---|---|---|---|
+| C# (patched) + 7z CLI | sequential | 66.68 s | 35.30 s | 46.80 s |
+| Rust release | `--jobs 1` | 49.33 s | 43.72 s | — |
+| Rust release | `--jobs auto` (8) | **5.49 s** | **6.60 s** | **7.08 s** |
 
 Full 10-set parity run (1,824 outputs, `edzsplit split … --jobs auto`):
 ~31 s total wall time; deep verify of all 1,824 outputs 62 s, 0 failures.
+
+Hirschmann results are also byte-identical between the two implementations
+(474/474 outputs, file name + SHA-256) and ship in the release as
+`Hirschmann-split-474.zip` for independent evaluation.
+
+Deep verify of the Hirschmann outputs: 474/474 OK. `--jobs 1` was not measured
+on Hirschmann.
 
 Notes:
 

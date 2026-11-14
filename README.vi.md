@@ -50,7 +50,15 @@ So file name + SHA-256 với bộ C# reference đã vá dưới `D:\Downloads\Br
 | Wittenstein | 142 | 142/142 |
 | **Tổng** | **1.824** | **1.824/1.824** |
 
+Và một archive nhà sản xuất mới, chạy sau bộ parity baseline như một kiểm chứng độc lập:
+
+| Source archive | Parts | Trùng khớp |
+|---|---|---|
+| Hirschmann (mới, 216 MB) | 474 (dedupe từ 521) | 474/474 |
+
 Deep verify toàn bộ output: 0 lỗi (62 giây). `--compress lzma2` vượt qua `7z t`. `--strict-part` cho đúng một `part` package trên mỗi output.
+
+Toàn bộ 474 output Hirschmann (manifest + items, ~1.0 GB) được phát hành như asset `Hirschmann-split-474.zip` trong v0.2.3 để tự kiểm chứng.
 
 Chạy lại kiểm chứng:
 
@@ -62,15 +70,16 @@ powershell -ExecutionPolicy Bypass -File .\scripts\parity.ps1
 
 ## Tải về
 
-Release mới nhất: **v0.2.2** — được build và self-test trong CI trên `ubuntu-latest` và `windows-latest`.
+Release mới nhất: **v0.2.3** — được build và self-test trong CI trên `ubuntu-latest` và `windows-latest`.
 
 | Nền tảng | Asset | Ghi chú |
 |---|---|---|
-| Linux x86-64 | `edzsplit-v0.2.2-x86_64-unknown-linux` | **Bản musl tĩnh hoàn toàn; không cần glibc.** Chạy được trên mọi kernel Linux x86-64. |
-| Windows x64 | `edzsplit-v0.2.2-x86_64-pc-windows.exe` | Bản MSVC với CRT tĩnh; chỉ import DLL hệ thống. |
+| `Hirschmann-split-474.zip` | Toàn bộ 474 output từ `Hirschmann.edz` (~1.0 GB, zip lưu trữ, kèm SHA-256) — dữ liệu nhà sản xuất được phân phối công khai, dùng để tự kiểm chứng. |
+| Linux x86-64 | `edzsplit-v0.2.3-x86_64-unknown-linux` | **Bản musl tĩnh hoàn toàn; không cần glibc.** Chạy được trên mọi kernel Linux x86-64. |
+| Windows x64 | `edzsplit-v0.2.3-x86_64-pc-windows.exe` | Bản MSVC với CRT tĩnh; chỉ import DLL hệ thống. |
 
 ```text
-https://github.com/wuwenhou/edzsplit-rs/releases/tag/v0.2.2
+https://github.com/wuwenhou/edzsplit-rs/releases/tag/v0.2.3
 ```
 
 Mỗi asset đều có file `.sha256` đi kèm trong cùng release.

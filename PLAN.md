@@ -351,6 +351,11 @@ Run on HTC (116), SEW (1000), Wittenstein (142) first, then all 10 sets.
 - `--compress lzma2` output passes `7z t` (LZMA2:23, 7 blocks).
 - `--strict-part` yields exactly one `part` package per output.
 - `case-a` extract+verify of a nested-EDZ ZIP works.
+- Hirschmann.edz (fresh 216 MB, 521 parts → 474 outputs): byte-identical
+  between the Rust port and the patched C# build; all 474 outputs pass deep
+  verify. Recorded upstream as `wuwenhou/edzsplit` docs/EVIDENCE.md §4.7.
+  The complete 474 outputs are published as the release asset
+  `Hirschmann-split-474.zip` (~1.0 GB).
 
 ### Deviations from the original plan
 

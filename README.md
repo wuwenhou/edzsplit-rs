@@ -51,7 +51,15 @@ Byte-identical (file name + SHA-256) to the patched C# reference under `D:\Downl
 | Wittenstein | 142 | 142/142 |
 | **Total** | **1,824** | **1,824/1,824** |
 
+Plus one further manufacturer archive, run after the parity baseline as an independent check:
+
+| Source archive | Parts | Identical |
+|---|---|---|
+| Hirschmann (fresh, 216 MB) | 474 (deduped from 521) | 474/474 |
+
 Deep verify of every output: 0 failures (62 s). `--compress lzma2` passes `7z t`. `--strict-part` yields exactly one `part` package per output.
+
+The full set of 474 Hirschmann outputs (manifests + items, ~1.0 GB) ships as a release asset `Hirschmann-split-474.zip` in v0.2.3 for independent evaluation.
 
 Reproduce:
 
@@ -63,15 +71,16 @@ powershell -ExecutionPolicy Bypass -File .\scripts\parity.ps1
 
 ## Download
 
-Latest release: **v0.2.2** — built and self-tested in CI on `ubuntu-latest` and `windows-latest`.
+Latest release: **v0.2.3** — built and self-tested in CI on `ubuntu-latest` and `windows-latest`.
 
 | Platform | Asset | Notes |
 |---|---|---|
-| Linux x86-64 | `edzsplit-v0.2.2-x86_64-unknown-linux` | **Fully static musl build; no glibc required.** Runs on any Linux x86-64 kernel. |
-| Windows x64 | `edzsplit-v0.2.2-x86_64-pc-windows.exe` | MSVC build with static CRT; imports only system DLLs. |
+| Any | `Hirschmann-split-474.zip` | Full set of 474 outputs from `Hirschmann.edz` (~1.0 GB, stored zip, with SHA-256) — manufacturer data redistributed publicly as-is, for independent evaluation. |
+| Linux x86-64 | `edzsplit-v0.2.3-x86_64-unknown-linux` | **Fully static musl build; no glibc required.** Runs on any Linux x86-64 kernel. |
+| Windows x64 | `edzsplit-v0.2.3-x86_64-pc-windows.exe` | MSVC build with static CRT; imports only system DLLs. |
 
 ```text
-https://github.com/wuwenhou/edzsplit-rs/releases/tag/v0.2.2
+https://github.com/wuwenhou/edzsplit-rs/releases/tag/v0.2.3
 ```
 
 Each asset ships a `.sha256` checksum file in the same release.
