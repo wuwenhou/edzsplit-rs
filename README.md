@@ -8,9 +8,13 @@
 > C# `edzsplit` (v0.1.2 lineage). It is verified **byte-identical** to that reference
 > on all **1,824 EDZ outputs** from all 10 manufacturer archives shipped for acceptance.
 > Structural verification (parse, reference resolution, path-traversal guard, decode)
-> passes 100 %. **Importing an output EDZ into a live EPLAN Parts Database has NOT been
-> executed on the development machine.** Claims about EPLAN import compatibility therefore
-> remain *unproven*. Read the reports before adopting.
+> passes 100 %. The Linux x86-64 build is exercised in CI on `ubuntu-latest`
+> (unit tests + `selftest`) on every push and on every release tag; the Windows x64
+> build runs the same checks on `windows-latest`; the local development environment
+> for this checkout could not execute the Linux binary (Windows dev box, so CI is the
+> Linux runtime of record). **Importing an output EDZ into a live EPLAN Parts Database
+> has NOT been executed on the development machine.** Claims about EPLAN import
+> compatibility therefore remain *unproven*. Read the reports before adopting.
 
 ## What it does
 
@@ -59,13 +63,25 @@ powershell -ExecutionPolicy Bypass -File .\scripts\parity.ps1
 
 ## Download
 
-Latest release: **v0.2.0** — `edzsplit.exe` for Windows x64 (GNU static build; imports only system DLLs).
+Latest release: **v0.2.1** — built and self-tested in CI on `ubuntu-latest` and `windows-latest`.
+
+| Platform | Asset | Notes |
+|---|---|---|
+| Linux x86-64 | `edzsplit-v0.2.1-x86_64-unknown-linux` | **Fully static musl build; no glibc required.** Runs on any Linux x86-64 kernel. |
+| Windows x64 | `edzsplit-v0.2.1-x86_64-pc-windows.exe` | Static GNU build; imports only system DLLs. |
 
 ```text
-https://github.com/wuwenhou/edzsplit-rs/releases/tag/v0.2.0
+https://github.com/wuwenhou/edzsplit-rs/releases/tag/v0.2.1
 ```
 
-SHA-256 of the release binary is published in the release notes and in `edzsplit-0.2.0-x86_64-pc-windows.sha256`.
+Each asset ships a `.sha256` checksum file in the same release.
+
+Linux notes:
+
+* Native engine works out of the box on any Linux x86-64 (verified by CI: `selftest` + unit tests on `ubuntu-latest`).
+* The optional `7z` CLI fallback needs p7zip: `sudo apt install p7zip-full`
+  (Debian/Ubuntu) / `sudo yum install p7zip` (RHEL). The default `--backend auto` does not need it.
+* `EDZSPLIT_7Z` overrides the path of the fallback `7z` binary.
 
 ## Build from source
 
